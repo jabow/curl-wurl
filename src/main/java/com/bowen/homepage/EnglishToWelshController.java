@@ -2,13 +2,10 @@ package com.bowen.homepage;
 
 import java.lang.constant.Constable;
 import java.util.List;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.web.bind.annotation.*;
+
+import static com.bowen.homepage.EnglishToWelsh.getWelsh;
 
 @RestController
 public class EnglishToWelshController {
@@ -16,9 +13,13 @@ public class EnglishToWelshController {
     // Aggregate root
     // tag::get-aggregate-root[]
     @GetMapping("/employees")
-    <String> Constable getEmployees() {
-        return "abc";
+    @ResponseBody
+    public String getFoos(@RequestParam String id) {
+        return "Welsh of " + id + " : " + getWelsh(id);
     }
+//    <String> Constable getEmployees() {
+//        return getWelsh("ok");
+//    }
     // end::get-aggregate-root[]
 
 //    @PostMapping("/employees")
